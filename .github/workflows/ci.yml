@@ -21,7 +21,7 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   build-and-sonar:
     name: Build & SonarQube Analysis
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: github.event_name == 'pull_request'
 
     steps:
@@ -92,7 +92,7 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   docker-build-push:
     name: Docker Build & Push to ECR
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     outputs:
@@ -148,7 +148,7 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   update-helm:
     name: Update Helm Chart Image Tag
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: docker-build-push
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
